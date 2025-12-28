@@ -2608,3 +2608,1164 @@ except FileNotFoundError:
 > Exceptions like FileNotFoundError should be handled to prevent program crashes.”
 
 ---
+🔥 Awesome! Let’s dive into **Topic 12: Modules & Packages in Python – INTERVIEW READY**
+
+This is **essential for real-world Python and interviews**.
+
+---
+
+# **12️⃣ Modules & Packages in Python**
+
+---
+
+## ✅ What is a Module?
+
+### 🧠 Bro Language
+
+Module = **Python file with functions, classes, variables**
+
+* Helps **organize code**
+* Reusable across programs
+
+---
+
+### 💻 Example (Create a module)
+
+`my_module.py`:
+
+```python
+def greet(name):
+    print(f"Hello {name}")
+```
+
+`main.py`:
+
+```python
+import my_module
+
+my_module.greet("Sam")
+```
+
+Output:
+
+```
+Hello Sam
+```
+
+---
+
+### 🎤 Interview Line
+
+> “A module is a Python file containing functions, classes, or variables which can be reused across programs.”
+
+---
+
+## 🔹 Types of Modules
+
+1. **Built-in modules** → math, os, sys
+2. **User-defined modules** → custom `.py` files
+3. **Third-party modules** → installed via pip (numpy, pandas)
+
+---
+
+### 💻 Built-in Example
+
+```python
+import math
+
+print(math.sqrt(16))
+```
+
+---
+
+## ✅ Import Variants (INTERVIEW TRAPS)
+
+1. Import entire module
+
+```python
+import math
+print(math.pi)
+```
+
+2. Import specific function
+
+```python
+from math import pi, sqrt
+print(pi)
+```
+
+3. Import with alias
+
+```python
+import math as m
+print(m.sqrt(25))
+```
+
+4. Import all (not recommended)
+
+```python
+from math import *
+```
+
+---
+
+## 🔹 What is a Package?
+
+### 🧠 Bro Language
+
+Package = **folder containing modules + **init**.py**
+
+* Organizes large projects
+* Hierarchy: package → module → function/class
+
+---
+
+### 💻 Example Folder Structure
+
+```
+my_package/
+    __init__.py
+    module1.py
+    module2.py
+```
+
+Usage:
+
+```python
+from my_package import module1
+module1.greet("Sam")
+```
+
+---
+
+## 🔹 sys.path & PYTHONPATH (INTERVIEW GOLD)
+
+* Python searches modules in **sys.path**
+* Can add custom folder for modules
+
+```python
+import sys
+print(sys.path)
+```
+
+---
+
+## 🔹 Installing Third-party Packages
+
+```bash
+pip install requests
+```
+
+```python
+import requests
+response = requests.get("https://google.com")
+print(response.status_code)
+```
+
+---
+
+## 🔹 Common Interview Traps ❌
+
+1. Forgetting `__init__.py` → Python 3.3+ not mandatory, but good for clarity
+2. Using `from module import *` → pollutes namespace
+3. Not knowing difference: module vs package
+4. Confusing relative vs absolute import
+
+---
+
+## 🔹 45-SECOND PERFECT INTERVIEW ANSWER
+
+> “Modules are Python files containing reusable code like functions and classes.
+> Packages are folders containing multiple modules organized for large projects.
+> Python provides built-in, user-defined, and third-party modules.
+> Modules can be imported entirely, partially, or with aliases.
+> Packages help maintain a clean code structure.”
+
+---
+🔥 Perfect! Now we move to **Topic 13: Decorators & Generators in Python – INTERVIEW READY**
+
+This is **advanced but frequently asked**, so we go **step-by-step**.
+
+---
+
+# **13️⃣ Decorators & Generators in Python**
+
+---
+
+## 🔹 Part 1: Decorators
+
+### ✅ What is a Decorator?
+
+### 🧠 Bro Language
+
+Decorator = **function that modifies another function**
+
+* Adds extra behavior **without changing original code**
+
+---
+
+### 💻 Basic Example
+
+```python
+def decorator(func):
+    def wrapper():
+        print("Before function")
+        func()
+        print("After function")
+    return wrapper
+
+def say_hello():
+    print("Hello")
+
+say_hello = decorator(say_hello)
+say_hello()
+```
+
+Output:
+
+```
+Before function
+Hello
+After function
+```
+
+---
+
+### 🔹 Using `@` Syntax (Shortcut)
+
+```python
+@decorator
+def say_hello():
+    print("Hello")
+
+say_hello()
+```
+
+✅ Same output, cleaner
+
+---
+
+### 🎤 Interview Line
+
+> “Decorators are functions that wrap another function to extend its behavior without modifying it.”
+
+---
+
+### 🔹 Decorator with Arguments
+
+```python
+def decorator(func):
+    def wrapper(name):
+        print("Before")
+        func(name)
+        print("After")
+    return wrapper
+
+@decorator
+def greet(name):
+    print(f"Hello {name}")
+
+greet("Sam")
+```
+
+---
+
+### 🔹 Common Interview Traps ❌
+
+1. Forgetting to return the wrapper function
+2. Misplacing `@decorator`
+3. Not passing arguments properly
+
+---
+
+## 🔹 Part 2: Generators
+
+### ✅ What is a Generator?
+
+### 🧠 Bro Language
+
+Generator = **function that yields values one by one**
+
+* Saves memory
+* Can handle large data
+
+---
+
+### 💻 Basic Example
+
+```python
+def my_gen():
+    yield 1
+    yield 2
+    yield 3
+
+for val in my_gen():
+    print(val)
+```
+
+Output:
+
+```
+1
+2
+3
+```
+
+---
+
+### 🔹 Using `next()`
+
+```python
+gen = my_gen()
+print(next(gen))  # 1
+print(next(gen))  # 2
+```
+
+---
+
+### 🔹 Generator vs List (Memory Efficient)
+
+```python
+# List
+lst = [i for i in range(1000000)]  # uses huge memory
+
+# Generator
+gen = (i for i in range(1000000))  # lazy evaluation, saves memory
+```
+
+---
+
+### 🎤 Interview Line
+
+> “Generators produce items one at a time using yield, making them memory-efficient compared to lists.”
+
+---
+
+### 🔹 Generator Expressions
+
+```python
+gen = (x*x for x in range(5))
+for val in gen:
+    print(val)
+```
+
+Output:
+
+```
+0
+1
+4
+9
+16
+```
+
+---
+
+### 🔹 Common Interview Traps ❌
+
+1. Forgetting `yield` vs `return`
+2. Using generator after it’s exhausted
+3. Confusing generator expressions with list comprehensions
+
+---
+
+### 🔥 60-SECOND PERFECT INTERVIEW ANSWER
+
+> “Decorators in Python are functions that modify or enhance other functions without changing their code.
+> Generators are functions that yield values one at a time, which is memory-efficient for large datasets.
+> Decorators use the @ symbol for syntactic sugar, and generators use the yield keyword for lazy evaluation.”
+
+---
+🔥 Perfect! Let’s go **Topic 14: Python Comprehensions & Lambda Functions – INTERVIEW READY**
+
+This is **high-frequency in interviews and coding rounds**.
+
+---
+
+# **14️⃣ Comprehensions & Lambda Functions in Python**
+
+---
+
+## 🔹 Part 1: List Comprehensions
+
+### ✅ What is a List Comprehension?
+
+### 🧠 Bro Language
+
+Short, clean way to **create lists** in one line instead of loops.
+
+---
+
+### 💻 Basic Example
+
+```python
+nums = [1, 2, 3, 4]
+squares = [x**2 for x in nums]
+print(squares)
+```
+
+Output:
+
+```
+[1, 4, 9, 16]
+```
+
+---
+
+### 🔹 With Condition
+
+```python
+nums = [1, 2, 3, 4, 5]
+evens = [x for x in nums if x % 2 == 0]
+print(evens)
+```
+
+Output:
+
+```
+[2, 4]
+```
+
+---
+
+### 🎤 Interview Line
+
+> “List comprehensions provide a concise way to create lists with optional filtering and transformations.”
+
+---
+
+## 🔹 Part 2: Dictionary Comprehensions
+
+```python
+nums = [1, 2, 3]
+squares = {x: x**2 for x in nums}
+print(squares)
+```
+
+Output:
+
+```
+{1: 1, 2: 4, 3: 9}
+```
+
+---
+
+## 🔹 Part 3: Set Comprehensions
+
+```python
+nums = [1, 2, 2, 3, 3]
+unique_squares = {x**2 for x in nums}
+print(unique_squares)
+```
+
+Output:
+
+```
+{1, 4, 9}
+```
+
+---
+
+## 🔹 Part 4: Lambda Functions
+
+### ✅ What is a Lambda?
+
+### 🧠 Bro Language
+
+Lambda = **anonymous function**, short single-line function
+
+```python
+square = lambda x: x**2
+print(square(5))
+```
+
+Output:
+
+```
+25
+```
+
+---
+
+### 🔹 With Map
+
+```python
+nums = [1, 2, 3, 4]
+squares = list(map(lambda x: x**2, nums))
+print(squares)
+```
+
+---
+
+### 🔹 With Filter
+
+```python
+nums = [1, 2, 3, 4, 5]
+evens = list(filter(lambda x: x % 2 == 0, nums))
+print(evens)
+```
+
+---
+
+### 🔹 With Reduce
+
+```python
+from functools import reduce
+
+nums = [1, 2, 3, 4]
+sum_total = reduce(lambda a, b: a + b, nums)
+print(sum_total)
+```
+
+Output:
+
+```
+10
+```
+
+---
+
+### 🎤 Interview Line
+
+> “Lambda functions are anonymous, single-line functions. They are often used with map(), filter(), and reduce() for functional programming.”
+
+---
+
+## 🔹 Common Interview Traps ❌
+
+1. Forgetting to wrap map/filter in `list()` in Python 3
+2. Confusing lambda syntax (`lambda x: x+1`)
+3. Using multiple statements in lambda (not allowed)
+4. List vs dictionary comprehension differences
+
+---
+
+### 🔥 60-SECOND PERFECT INTERVIEW ANSWER
+
+> “Python comprehensions provide a concise way to create lists, dictionaries, and sets with optional conditions.
+> Lambda functions are anonymous single-line functions, commonly used with map, filter, and reduce for functional programming.”
+
+---
+🔥 Perfect! Now we dive into **Topic 15: Iterators & Generators in Python – INTERVIEW READY**
+
+This is **advanced Python + high-frequency in interviews**.
+
+---
+
+# **15️⃣ Iterators & Generators**
+
+---
+
+## 🔹 Part 1: Iterators
+
+### ✅ What is an Iterator?
+
+### 🧠 Bro Language
+
+* Iterator = object that can **return one item at a time**
+* Works with `for` loop or `next()`
+
+---
+
+### 🔹 Creating an Iterator
+
+```python
+nums = [1, 2, 3]
+it = iter(nums)
+
+print(next(it))  # 1
+print(next(it))  # 2
+print(next(it))  # 3
+```
+
+> `iter()` → gets iterator object
+> `next()` → gets next item
+
+---
+
+### 🎤 Interview Line
+
+> “An iterator is an object that allows traversing through all elements of a collection, one element at a time, using iter() and next().”
+
+---
+
+### 🔹 Iterator Protocol
+
+1. Object must implement `__iter__()` → returns iterator object
+2. Object must implement `__next__()` → returns next value
+
+---
+
+### 💻 Custom Iterator Example
+
+```python
+class MyNumbers:
+    def __init__(self, start, end):
+        self.current = start
+        self.end = end
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.current > self.end:
+            raise StopIteration
+        else:
+            self.current += 1
+            return self.current - 1
+
+nums = MyNumbers(1, 3)
+for n in nums:
+    print(n)
+```
+
+Output:
+
+```
+1
+2
+3
+```
+
+---
+
+## 🔹 Part 2: Generators (Memory Efficient Iterators)
+
+### ✅ What is a Generator?
+
+* Generator = function that **yields values one at a time**
+* Lazy evaluation → saves memory
+
+---
+
+### 💻 Generator Example
+
+```python
+def my_gen():
+    for i in range(3):
+        yield i
+
+gen = my_gen()
+print(next(gen))  # 0
+print(next(gen))  # 1
+```
+
+---
+
+### 🔹 Generator Expressions
+
+```python
+gen = (x*x for x in range(5))
+for val in gen:
+    print(val)
+```
+
+Output:
+
+```
+0
+1
+4
+9
+16
+```
+
+---
+
+### 🎤 Interview Line
+
+> “Generators are memory-efficient iterators that yield values one by one using the yield keyword.”
+
+---
+
+## 🔹 Difference: Iterator vs Generator
+
+| Feature  | Iterator                    | Generator           |
+| -------- | --------------------------- | ------------------- |
+| Memory   | Uses memory for all items   | Lazy, one at a time |
+| Syntax   | Class + **iter** + **next** | Function + yield    |
+| Use Case | Small collections           | Large datasets      |
+
+---
+
+### 🔹 Common Interview Traps ❌
+
+1. Using generator after it’s exhausted
+2. Confusing `return` and `yield`
+3. Forgetting StopIteration in custom iterator
+4. Memory usage assumptions
+
+---
+
+### 🔥 60-SECOND PERFECT INTERVIEW ANSWER
+
+> “Iterators are objects that allow traversing a collection one item at a time using iter() and next().
+> Generators are memory-efficient iterators defined using functions with the yield keyword.
+> Generators provide lazy evaluation, making them suitable for large datasets.
+> Custom iterators require **iter**() and **next**() methods, while generators simplify this with yield.”
+
+---
+🔥 Perfect! Let’s go **Topic 16: Python Regular Expressions (re Module) – INTERVIEW READY**
+
+Regex is **high-frequency in interviews, data parsing, and real-world projects**.
+
+---
+
+# **16️⃣ Regular Expressions in Python**
+
+---
+
+## ✅ What is a Regular Expression?
+
+### 🧠 Bro Language
+
+Regex = **pattern matching language**
+
+* Used to **search, match, extract, and validate strings**
+
+---
+
+### 🎤 Interview Line
+
+> “A regular expression is a sequence of characters that defines a search pattern, commonly used for string matching and manipulation.”
+
+---
+
+## 🔹 Importing the Module
+
+```python
+import re
+```
+
+---
+
+## 🔹 Basic Functions
+
+1. **re.match()** → matches from start of string
+2. **re.search()** → searches anywhere in string
+3. **re.findall()** → returns all matches as a list
+4. **re.sub()** → replaces pattern with string
+5. **re.split()** → splits string by pattern
+
+---
+
+### 💻 Examples
+
+```python
+import re
+
+text = "My number is 98765"
+
+# match
+print(re.match(r"My", text))  # <re.Match object ...>
+
+# search
+print(re.search(r"number", text).group())  # number
+
+# findall
+print(re.findall(r"\d+", text))  # ['98765']
+
+# sub
+print(re.sub(r"\d+", "XXXXX", text))  # My number is XXXXX
+
+# split
+print(re.split(r"\s", text))  # ['My', 'number', 'is', '98765']
+```
+
+---
+
+## 🔹 Common Regex Patterns
+
+| Pattern | Meaning                      |
+| ------- | ---------------------------- |
+| `\d`    | Digit 0-9                    |
+| `\D`    | Non-digit                    |
+| `\w`    | Word character (a-zA-Z0-9_)  |
+| `\W`    | Non-word character           |
+| `\s`    | Whitespace                   |
+| `\S`    | Non-whitespace               |
+| `.`     | Any character except newline |
+| `^`     | Start of string              |
+| `$`     | End of string                |
+| `*`     | 0 or more repetitions        |
+| `+`     | 1 or more repetitions        |
+| `?`     | 0 or 1 repetition            |
+| `{n}`   | Exact n repetitions          |
+
+---
+
+## 🔹 Flags (Useful in Interviews)
+
+```python
+text = "Python\nPYTHON"
+
+# ignore case
+print(re.findall(r"python", text, re.I))  # ['Python', 'PYTHON']
+
+# multiline ^$
+print(re.findall(r"^PYTHON", text, re.M))  # ['PYTHON']
+```
+
+---
+
+## 🔹 Compiling Regex (Performance Tip)
+
+```python
+pattern = re.compile(r"\d+")
+print(pattern.findall("There are 123 cats and 45 dogs"))  # ['123', '45']
+```
+
+---
+
+## 🔹 Common Interview Traps ❌
+
+1. Forgetting raw string `r"pattern"` → backslash issues
+2. Confusing `match` vs `search`
+3. Not using `group()` after `search`
+4. Greedy vs non-greedy matching (`.*` vs `.*?`)
+
+---
+
+### 🔥 60-SECOND PERFECT INTERVIEW ANSWER
+
+> “Regular expressions are patterns used for string searching, matching, and manipulation.
+> Python’s `re` module provides functions like match(), search(), findall(), sub(), and split() for regex operations.
+> Raw strings (r"") are preferred to avoid backslash issues, and patterns can include digits, word characters, whitespace, and quantifiers.”
+
+---
+🔥 Perfect! Now we go **Topic 17: Python Threading & Multiprocessing – INTERVIEW READY**
+
+This is **crucial for interviews related to concurrency, performance, and real-world Python apps**.
+
+---
+
+# **17️⃣ Threading & Multiprocessing in Python**
+
+---
+
+## 🔹 Part 1: Threading
+
+### ✅ What is Threading?
+
+### 🧠 Bro Language
+
+* Thread = **lightweight task inside a program**
+* Multiple threads = **run tasks simultaneously in the same process**
+* Good for **I/O bound tasks**
+
+---
+
+### 💻 Basic Thread Example
+
+```python
+import threading
+
+def print_numbers():
+    for i in range(5):
+        print(i)
+
+t1 = threading.Thread(target=print_numbers)
+t1.start()
+t1.join()  # Wait for thread to finish
+```
+
+---
+
+### 🔹 Threading Advantages
+
+* Lightweight (shares memory of parent process)
+* Faster for I/O tasks (file/network)
+
+---
+
+### 🔹 Common Interview Line
+
+> “Threading allows multiple tasks to run concurrently within the same process, sharing memory space.”
+
+---
+
+## 🔹 Part 2: Multiprocessing
+
+### ✅ What is Multiprocessing?
+
+### 🧠 Bro Language
+
+* Process = **independent program instance**
+* Multiple processes = **true parallelism** (CPU bound tasks)
+
+---
+
+### 💻 Basic Multiprocessing Example
+
+```python
+from multiprocessing import Process
+
+def print_numbers():
+    for i in range(5):
+        print(i)
+
+p1 = Process(target=print_numbers)
+p1.start()
+p1.join()  # Wait for process to finish
+```
+
+---
+
+### 🔹 Multiprocessing Advantages
+
+* Uses multiple CPU cores
+* True parallel execution
+* Good for **CPU bound tasks**
+
+---
+
+### 🔹 Threading vs Multiprocessing
+
+| Feature     | Threading     | Multiprocessing |
+| ----------- | ------------- | --------------- |
+| Memory      | Shared        | Separate        |
+| Use Case    | I/O bound     | CPU bound       |
+| Parallelism | Limited (GIL) | True parallel   |
+| Creation    | Lightweight   | Heavyweight     |
+
+---
+
+### 🔹 Common Interview Traps ❌
+
+1. Confusing threads vs processes
+2. Forgetting `join()` → main program may exit early
+3. Shared data in threads → race conditions
+4. GIL limits CPU-bound threading
+
+---
+
+### 🔹 60-SECOND PERFECT INTERVIEW ANSWER
+
+> “Threading allows multiple tasks to run concurrently within the same process and shares memory, making it ideal for I/O-bound tasks.
+> Multiprocessing creates separate processes for true parallel execution, suitable for CPU-bound tasks.
+> Threading is lightweight but limited by the GIL, whereas multiprocessing uses multiple cores for parallelism.”
+
+---
+🔥 Perfect! Let’s move to **Topic 18: Python Networking & Sockets – INTERVIEW READY**
+
+This is **important for backend, real-time apps, and system design interviews**.
+
+---
+
+# **18️⃣ Python Networking & Sockets**
+
+---
+
+## 🔹 What is Networking in Python?
+
+### 🧠 Bro Language
+
+Networking = **computers talk to each other**.
+Python provides **socket module** to create client-server applications.
+
+---
+
+### 🎤 Interview Line
+
+> “Python’s socket module allows programs to communicate over a network using TCP/IP or UDP protocols.”
+
+---
+
+## 🔹 Part 1: TCP Server & Client
+
+### 💻 TCP Server Example
+
+```python
+import socket
+
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server.bind(("localhost", 12345))
+server.listen(1)
+print("Waiting for connection...")
+
+conn, addr = server.accept()
+print(f"Connected by {addr}")
+conn.send(b"Hello Client")
+conn.close()
+```
+
+---
+
+### 💻 TCP Client Example
+
+```python
+import socket
+
+client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+client.connect(("localhost", 12345))
+data = client.recv(1024)
+print(data.decode())
+client.close()
+```
+
+Output on Client:
+
+```
+Hello Client
+```
+
+---
+
+## 🔹 Part 2: UDP Example
+
+```python
+import socket
+
+# Server
+server = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+server.bind(("localhost", 12346))
+data, addr = server.recvfrom(1024)
+print(f"Received {data} from {addr}")
+```
+
+```python
+# Client
+client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+client.sendto(b"Hello UDP Server", ("localhost", 12346))
+```
+
+---
+
+## 🔹 Socket Functions to Remember
+
+| Function          | Purpose                |
+| ----------------- | ---------------------- |
+| socket()          | Create socket          |
+| bind()            | Bind IP & port         |
+| listen()          | Listen for connections |
+| accept()          | Accept connection      |
+| connect()         | Connect to server      |
+| send()/sendto()   | Send data              |
+| recv()/recvfrom() | Receive data           |
+| close()           | Close socket           |
+
+---
+
+## 🔹 Common Interview Traps ❌
+
+1. Confusing TCP (connection-based) vs UDP (connectionless)
+2. Forgetting `decode()` for received bytes
+3. Not closing sockets → resource leak
+4. Mixing ports or hostnames
+
+---
+
+### 🔹 60-SECOND PERFECT INTERVIEW ANSWER
+
+> “Python provides the socket module for networking.
+> TCP sockets are connection-oriented, suitable for reliable communication, while UDP sockets are connectionless and faster.
+> Basic operations include creating a socket, binding, listening, connecting, sending, receiving, and closing.
+> Sockets enable Python programs to communicate over networks for client-server applications.”
+
+---
+🔥 Perfect! Let’s move to **Topic 19: Python Web Scraping – INTERVIEW READY**
+
+This is **highly asked in data, automation, and real-world Python projects**.
+
+---
+
+# **19️⃣ Python Web Scraping**
+
+---
+
+## 🔹 What is Web Scraping?
+
+### 🧠 Bro Language
+
+Web scraping = **program reads website data automatically**.
+Python makes it **easy with requests + BeautifulSoup**.
+
+---
+
+### 🎤 Interview Line
+
+> “Web scraping is the process of extracting data from websites programmatically using Python libraries like requests and BeautifulSoup.”
+
+---
+
+## 🔹 Part 1: Fetching Web Page
+
+```python
+import requests
+
+url = "https://example.com"
+response = requests.get(url)
+print(response.text[:200])  # first 200 chars
+```
+
+* `requests.get()` → fetch HTML content
+* `response.text` → HTML as string
+
+---
+
+## 🔹 Part 2: Parsing HTML with BeautifulSoup
+
+```python
+from bs4 import BeautifulSoup
+
+html = "<html><body><h1>Hello</h1><p>World</p></body></html>"
+soup = BeautifulSoup(html, "html.parser")
+
+print(soup.h1.text)  # Hello
+print(soup.p.text)   # World
+```
+
+---
+
+## 🔹 Part 3: Extracting Links
+
+```python
+import requests
+from bs4 import BeautifulSoup
+
+url = "https://example.com"
+response = requests.get(url)
+soup = BeautifulSoup(response.text, "html.parser")
+
+for link in soup.find_all("a"):
+    print(link.get("href"))
+```
+
+---
+
+## 🔹 Part 4: Handling Tables & Lists
+
+```python
+html = """
+<table>
+<tr><td>Name</td><td>Age</td></tr>
+<tr><td>Sam</td><td>22</td></tr>
+</table>
+"""
+
+soup = BeautifulSoup(html, "html.parser")
+rows = soup.find_all("tr")
+for row in rows:
+    cols = row.find_all("td")
+    print([col.text for col in cols])
+```
+
+---
+
+## 🔹 Common Interview Traps ❌
+
+1. Forgetting to parse HTML (`html.parser` or `lxml`)
+2. Accessing attributes vs text (`.text` vs `.get()`)
+3. Not handling exceptions or network errors
+4. Overloading website → ethical scraping
+
+---
+
+### 🔹 60-SECOND PERFECT INTERVIEW ANSWER
+
+> “Web scraping in Python allows automated data extraction from websites.
+> The `requests` library fetches HTML content, and `BeautifulSoup` parses it.
+> We can extract tags, attributes, text, tables, and links.
+> Proper exception handling and ethical scraping practices are essential.”
+
+---
