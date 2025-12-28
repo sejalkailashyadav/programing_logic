@@ -3769,3 +3769,315 @@ for row in rows:
 > Proper exception handling and ethical scraping practices are essential.”
 
 ---
+🔥 Bro, got you! Let’s go **SUPER DEEP**, bro-style, so you **understand AND can answer interviews fluently**. We’ll start from **8️⃣ Control Statements** and go slow, explaining **why, how, and what interviews ask**, with code and “bro talk”.
+
+---
+
+# **8️⃣ Control Statements (Bro Mode)**
+
+## **1️⃣ Conditional Statements**
+
+### **`if` Statement**
+
+* Bro Language: “Check something → if true, do the job. Otherwise, skip.”
+* Real-life example: “If it’s raining → take umbrella.”
+
+```python
+age = 20
+if age >= 18:
+    print("Adult")
+```
+
+**Interview Tip:**
+
+> “If executes a block only when the condition is True.”
+
+---
+
+### **`elif` Statement**
+
+* Bro Language: “First if failed? Try this next condition.”
+
+```python
+marks = 75
+if marks >= 90:
+    print("Grade A")
+elif marks >= 60:
+    print("Grade B")
+else:
+    print("Grade C")
+```
+
+* “elif = else if, check sequentially.”
+
+---
+
+### **`else` Statement**
+
+* Bro Language: “Nothing matched? Do this fallback thing.”
+
+```python
+num = 3
+if num % 2 == 0:
+    print("Even")
+else:
+    print("Odd")
+```
+
+---
+
+### **Nested Conditions**
+
+* Bro Language: “Check condition inside another check.”
+* Example: Age between 18-60 → working age
+
+```python
+age = 25
+if age > 18:
+    if age < 60:
+        print("Working age")
+```
+
+---
+
+## **2️⃣ Loops**
+
+### **`for` Loop**
+
+* Bro Language: “Repeat something known times or for each item in sequence.”
+
+```python
+for i in range(3):
+    print(i)
+```
+
+* Real-life: “Check each item in basket.”
+
+---
+
+### **`while` Loop**
+
+* Bro Language: “Keep doing until condition stops being true.”
+
+```python
+i = 0
+while i < 3:
+    print(i)
+    i += 1
+```
+
+* Real-life: “Keep studying until exam passes.”
+
+---
+
+### **Loop Control Statements**
+
+#### **`break`**
+
+* Bro Language: “Enough bro, exit the loop now.”
+
+```python
+for i in range(5):
+    if i == 3:
+        break
+    print(i)
+```
+
+Output:
+
+```
+0
+1
+2
+```
+
+#### **`continue`**
+
+* Bro Language: “Skip this round, continue next one.”
+
+```python
+for i in range(5):
+    if i == 3:
+        continue
+    print(i)
+```
+
+Output:
+
+```
+0
+1
+2
+4
+```
+
+**Interview Asked:** Difference?
+
+> Break = stop loop. Continue = skip current iteration only.
+
+#### **`pass`**
+
+* Bro Language: “Do nothing, placeholder only.”
+
+```python
+if True:
+    pass
+```
+
+---
+
+# **9️⃣ Functions (Bro Mode)**
+
+### **1️⃣ Function Definition**
+
+* Bro Language: “Package some work, give it a name, reuse anytime.”
+
+```python
+def greet(name):
+    print(f"Hello {name}")
+```
+
+---
+
+### **2️⃣ Parameters vs Arguments**
+
+* Parameter = variable in function
+* Argument = actual value passed
+
+```python
+def add(a, b):  # a,b = parameters
+    return a + b
+
+print(add(5, 3))  # 5,3 = arguments
+```
+
+---
+
+### **3️⃣ Return Values**
+
+* Bro Language: “Give result back to caller.”
+
+```python
+def square(x):
+    return x**2
+
+res = square(5)
+print(res)  # 25
+```
+
+---
+
+### **4️⃣ Default Arguments**
+
+```python
+def greet(name="Guest"):
+    print(f"Hello {name}")
+
+greet()  # Hello Guest
+```
+
+---
+
+### **5️⃣ Keyword Arguments**
+
+```python
+def info(name, age):
+    print(f"{name} is {age} years old")
+
+info(age=22, name="Sam")
+```
+
+---
+
+### **6️⃣ Variable-Length Arguments**
+
+#### `*args` → tuple
+
+```python
+def add(*nums):
+    return sum(nums)
+
+print(add(1,2,3))  # 6
+```
+
+#### `**kwargs` → dict
+
+```python
+def info(**data):
+    print(data)
+
+info(name="Sam", age=22)
+```
+
+---
+
+### **7️⃣ Lambda Functions**
+
+* Bro Language: “Mini anonymous one-line functions for fast work.”
+
+```python
+square = lambda x: x**2
+print(square(5))  # 25
+```
+
+**Interview Asked:** Why reusable?
+
+> “Functions store logic once → call anywhere → modular + clean + readable.”
+
+---
+
+# **🔟 Strings (Bro Mode)**
+
+### **1️⃣ Indexing**
+
+```python
+s = "Python"
+print(s[0])  # P
+print(s[-1]) # n
+```
+
+### **2️⃣ Slicing**
+
+```python
+print(s[0:4])  # Pyth
+print(s[::2])  # Pto
+```
+
+### **3️⃣ Immutability**
+
+```python
+s = "Python"
+# s[0] = "p"  # ❌ Error
+```
+
+**Interview Asked:** Why immutable?
+
+> “Prevents accidental change, memory-efficient, safe for multiple references.”
+
+---
+
+### **4️⃣ String Methods**
+
+```python
+text = "  Hello World  "
+print(text.upper())     # HELLO WORLD
+print(text.lower())     # hello world
+print(text.split())     # ['Hello','World']
+print(" ".join(['Hi','Bro'])) # Hi Bro
+print(text.replace("World","Python")) # Hello Python
+print(text.strip()) # "Hello World"
+```
+
+---
+
+### **5️⃣ String Formatting**
+
+```python
+name = "Sam"
+age = 22
+print(f"My name is {name} and age is {age}")
+print("My name is {} and age is {}".format(name, age))
+print("My name is %s and age is %d" % (name, age))
+```
+
+---
