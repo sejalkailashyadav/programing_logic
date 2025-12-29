@@ -1,10 +1,10 @@
-# 🔥 1️⃣ PYTHON OVERVIEW (VERY IN-DEPTH – INTERVIEW READY)
+#  1️⃣ PYTHON OVERVIEW (VERY IN-DEPTH – INTERVIEW READY)
 
 ---
 
 ## ✅ 1. What is Python? (DEEP)
 
-### 🧠 Bro Language (Concept)
+###  Bro Language (Concept)
 
 Python ek **general-purpose programming language** hai matlab:
 
